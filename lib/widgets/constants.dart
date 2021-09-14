@@ -108,10 +108,17 @@ Widget createStory({ @required hightt , @required wiidth })=> Container(
       Positioned(
         top: hightt*0.02,
         left: wiidth*0.02,
-        child: CircleAvatar(
-          backgroundColor: Colors.blue,
-          backgroundImage: AssetImage(model.pImage),
+        child: Container(
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+              color: Colors.grey[200], borderRadius: BorderRadius.circular(20)),
+          height: hightt*0.01,
+          width: wiidth*0.01,
+          child: Image(
+            image: NetworkImage(model.pImage),
+            fit: BoxFit.cover,
           ),
+        ),
         ),
     ],
   ),

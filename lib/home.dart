@@ -1,10 +1,8 @@
 import 'package:facebook/cubit/cubit.dart';
 import 'package:facebook/cubit/stats.dart';
-import 'package:facebook/models/story_model.dart';
 import 'package:facebook/widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bloc/bloc.dart';
 
 
 class Home extends StatelessWidget {
@@ -44,6 +42,7 @@ class Home extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
+                            const Divider(color: Colors.grey,),
                             Container(
                               color: Colors.white10,
                               child: Column(
@@ -105,7 +104,7 @@ class Home extends StatelessWidget {
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
-                                                Icon(Icons.photo_sharp,color: Colors.lightGreenAccent,),
+                                                Icon(Icons.photo_library_outlined,color: Colors.lightGreenAccent,),
                                                 SizedBox(width: wiidth*0.01,),
                                                 Text('Live',
                                                   style: TextStyle(color: Colors.grey),
