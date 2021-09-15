@@ -1,5 +1,7 @@
 import 'package:facebook/home.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 
 void main() {
@@ -13,19 +15,23 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Facebook',
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light)
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          color: Colors.white,
+          titleTextStyle: TextStyle(color: Colors.blueAccent,
+              fontSize: 19,
+              fontWeight:FontWeight.w700),
+          systemOverlayStyle: SystemUiOverlayStyle(
+              statusBarColor: Colors.red,
+              statusBarIconBrightness: Brightness.dark
+          ),
         ),
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.black,
-        textTheme: Theme.of(context).textTheme.apply(
-          bodyColor: Colors.white
-        ),
-        hintColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.white),
-
+        scaffoldBackgroundColor: Colors.grey,
+        textTheme: Theme.of(context).textTheme.apply(bodyColor: Colors.black,),
+        hintColor: Colors.black,
+        iconTheme: IconThemeData(color: Colors.black),
       ),
-      home:  const Home(),
+      home:   Home(),
     );
   }
 }

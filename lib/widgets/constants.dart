@@ -1,11 +1,8 @@
-
-
-
 import 'package:facebook/models/post_model.dart';
 import 'package:facebook/models/story_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:carousel_slider/carousel_slider.dart';
 
 double width(BuildContext context) {
   return MediaQuery.of(context).size.width;
@@ -27,7 +24,7 @@ Widget createStory({ @required hightt , @required wiidth })=> Container(
             borderRadius: BorderRadius.circular(15),
             image:   DecorationImage(
               fit: BoxFit.fill,
-              image: AssetImage('assets/images/adel.jpg'),
+              image: AssetImage('assets/images/a.jpg'),
             )),
       ),
       Container(
@@ -73,55 +70,91 @@ Widget createStory({ @required hightt , @required wiidth })=> Container(
   @required hightt ,
   @required wiidth ,
    required StoryModel model,
-})=> Container(
-  width: wiidth*0.27,
-  child: Stack(
-    alignment: AlignmentDirectional.bottomCenter,
-    children: [
-      Container(
-        height: hightt*0.33,
-        width: wiidth*0.27,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            image:   DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage(model.image),
-            )),
-      ),
-      Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children:  [
-          Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 8.0),
-            child: Text(
-              model.text,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                  fontSize: 13),
-              textAlign: TextAlign.center,
+})=> Row(
+  children: [
+        Container(
+      width: wiidth*0.27,
+      child: Stack(
+        alignment: AlignmentDirectional.bottomCenter,
+
+        children: [
+
+          Container(
+
+            height: hightt*0.33,
+
+            width: wiidth*0.27,
+
+            decoration: BoxDecoration(
+
+                borderRadius: BorderRadius.circular(15),
+
+                image:   DecorationImage(
+
+                  fit: BoxFit.fill,
+
+                  image: AssetImage(model.image),
+
+                )),
+
+          ),
+
+          Column(
+
+            mainAxisAlignment: MainAxisAlignment.end,
+
+            children:  [
+
+              Padding(
+
+                padding:  EdgeInsets.symmetric(horizontal: 8.0),
+
+                child: Text(
+
+                  model.text,
+
+                  maxLines: 2,
+
+                  overflow: TextOverflow.ellipsis,
+
+                  style: TextStyle(
+                    color: Colors.white,
+                      fontSize: 13),
+
+                  textAlign: TextAlign.center,
+
+                ),
+
+              ),
+
+              SizedBox(height: hightt*0.02,)
+
+            ],
+
+          ),
+
+          Positioned(
+
+            top: hightt*0.02,
+
+            left: wiidth*0.02,
+
+            child: CircleAvatar(
+
+              backgroundColor: Colors.blue,
+
+              backgroundImage: AssetImage(model.pImage),
+
+              ),
+
             ),
-          ),
-          SizedBox(height: hightt*0.02,)
+
         ],
+
       ),
-      Positioned(
-        top: hightt*0.02,
-        left: wiidth*0.02,
-        child: Container(
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(
-              color: Colors.grey[200], borderRadius: BorderRadius.circular(20)),
-          height: hightt*0.01,
-          width: wiidth*0.01,
-          child: Image(
-            image: NetworkImage(model.pImage),
-            fit: BoxFit.cover,
-          ),
-        ),
-        ),
-    ],
-  ),
+
+    ),
+  ],
 );
 
 Widget postBody({
@@ -129,7 +162,7 @@ Widget postBody({
   @required wiidth ,
   required PostModel model,
 })=> Container(
-  color: Colors.white10,
+  color: Colors.white,
   width: double.infinity,
   padding: EdgeInsets.all(15),
   child: Column(
@@ -171,16 +204,39 @@ Widget postBody({
         child: Text(model.text,),
       ),
       SizedBox(height: hightt*0.01,),
-      Image.asset(model.image),
+      if (model.image != null)
+        CarouselSlider(
+          options: CarouselOptions(
+            height: 200,
+              scrollPhysics: BouncingScrollPhysics(),
+              initialPage: 0,
+              viewportFraction: 1.0,
+              enableInfiniteScroll: false,
+              reverse: false,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              scrollDirection: Axis.horizontal),
+          items: model.image?.map((i) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Image(
+                  image: AssetImage(i),
+                  fit: BoxFit.fill,
+                  width: double.infinity,
+                  height: 200,
+                );
+              },
+            );
+          }).toList(),
+        ),
       SizedBox(height: hightt*0.01,),
       Row(
         children: [
-          Icon(Icons.favorite,color: Colors.red,),
+          Text(model.likes,style: TextStyle(color: Colors.blue),),
           SizedBox(width: wiidth*0.01,),
-          Text('24',style: TextStyle(color: Colors.red),),
+          Icon(Icons.thumb_up_sharp,color: Colors.blue,size: 17,),
           Spacer(),
-          Text('5 comments . ',style: TextStyle(color: Colors.grey),),
-          Text('5 shares ',style: TextStyle(color: Colors.grey),),
+          Text('${model.comments} comments . ',style: TextStyle(color: Colors.grey),),
+          Text('${model.shares} shares ',style: TextStyle(color: Colors.grey),),
 
         ],
       ),
@@ -191,9 +247,9 @@ Widget postBody({
             MaterialButton(
               onPressed: (){},
               child: Row(children: [
-                Icon(Icons.favorite_border,color: Colors.grey,),
+                Icon(Icons.thumb_up_alt_outlined,color: Colors.grey,),
                 SizedBox(width: wiidth*0.01,),
-                Text('Love',style: TextStyle(color: Colors.grey),),
+                Text('Like',style: TextStyle(color: Colors.grey),),
               ],),
             ),
           ],),
@@ -224,6 +280,7 @@ Widget postBody({
     ],
   ),
 );
+
 
 
 

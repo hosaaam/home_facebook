@@ -22,14 +22,18 @@ class Home extends StatelessWidget {
               length: 6,
               child: Scaffold(
                   appBar: AppBar(
-                    elevation: 0,
-                    backgroundColor: Colors.white10,
                     title:const Text('facebook'),
                     actions:  [
-                      Icon(Icons.search),
+                     const CircleAvatar(radius: 14,
+                          backgroundColor: Color(0xfff2f2f2),
+                          child: Icon(Icons.search,
+                            color: Colors.black,size: 18,)),
                       Padding(
                         padding:  EdgeInsets.symmetric(horizontal: wiidth*0.03),
-                        child: Icon(Icons.message_outlined),
+                        child: const CircleAvatar(
+                          radius: 14,
+                            backgroundColor: Color(0xfff2f2f2),
+                            child: Icon(Icons.message_outlined,color: Colors.black,size: 18,)),
                       ),
                     ],
                     bottom: cubit.tabs(),
@@ -42,9 +46,8 @@ class Home extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            const Divider(color: Colors.grey,),
                             Container(
-                              color: Colors.white10,
+                              color: Colors.white,
                               child: Column(
                                 children: [
                                   Padding(
@@ -53,7 +56,7 @@ class Home extends StatelessWidget {
                                       children:  [
                                         CircleAvatar(
                                             radius: hightt*0.03,
-                                            backgroundImage: AssetImage("assets/images/adel.jpg",),
+                                            backgroundImage: AssetImage("assets/images/boat.jpg",),
                                         ),
                                         SizedBox(width: wiidth*0.02,),
                                         Expanded(
@@ -104,7 +107,7 @@ class Home extends StatelessWidget {
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
-                                                Icon(Icons.photo_library_outlined,color: Colors.lightGreenAccent,),
+                                                Icon(Icons.photo_sharp,color: Colors.lightGreenAccent,),
                                                 SizedBox(width: wiidth*0.01,),
                                                 Text('Live',
                                                   style: TextStyle(color: Colors.grey),
@@ -142,7 +145,7 @@ class Home extends StatelessWidget {
                             SizedBox(height: hightt*0.01,),
                             Container(
                               height: hightt*0.27,
-                              color: Colors.white10,
+                              color: Colors.white,
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                                 child: ListView.separated(
