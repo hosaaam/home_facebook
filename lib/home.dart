@@ -51,12 +51,12 @@ class Home extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding:  EdgeInsets.only(top: hightt*0.02,right: wiidth*0.03),
+                                    padding:  EdgeInsets.only(top: hightt*0.02,right: wiidth*0.03,left: wiidth*0.03),
                                     child: Row(
                                       children:  [
                                         CircleAvatar(
                                             radius: hightt*0.03,
-                                            backgroundImage: AssetImage("assets/images/boat.jpg",),
+                                            backgroundImage: AssetImage("assets/images/a.jpg",),
                                         ),
                                         SizedBox(width: wiidth*0.02,),
                                         Expanded(

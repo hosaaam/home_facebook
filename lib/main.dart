@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
               fontSize: 19,
               fontWeight:FontWeight.w700),
           systemOverlayStyle: SystemUiOverlayStyle(
-              statusBarColor: Colors.red,
+              statusBarColor: Colors.white,
               statusBarIconBrightness: Brightness.dark
           ),
         ),
